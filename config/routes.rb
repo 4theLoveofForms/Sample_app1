@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :topics
+  resources :users
   root 'static_pages#home'
   get 'static_pages/home'
   get 'static_pages/help'
