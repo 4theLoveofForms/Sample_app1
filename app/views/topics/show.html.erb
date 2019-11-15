@@ -9,6 +9,16 @@
   <strong>Titles:</strong>
   <%= @topic.titles %>
 </p>
-
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
+
+<br></br>
+<p>Members</p>
+
+<ul>
+<%= @members.each do |m| %>
+    <li> <%= m.user.name %>  Has X amount of praise</li>
+<% end %>
+</ul>
+
+
