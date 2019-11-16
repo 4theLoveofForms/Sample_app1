@@ -17,7 +17,7 @@
 
 <ul>
 <%= @members.each do |m| %>
-    <li> <%= m.user.name %>  Has X amount of praise</li>
+    <li> <%= m.user.name %>  Has X amount of praise. Qualifications: <%= m.user.about_me %> Currently supports bubble X </li>
 <% end %>
 </ul>
 
