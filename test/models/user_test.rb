@@ -74,4 +74,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end 
   
+  test "destroying user should remove their microposts" do #prob want to remove this one
+    @user.save
+    @user.microposts.create!(content: "Lopis lorium")
+    assert_difference 'Micropost.count', -1 do
+      @user.destroy
+    end
+  end
+  
 end
