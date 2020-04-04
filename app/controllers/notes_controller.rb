@@ -10,6 +10,10 @@ class NotesController < ApplicationController
   # GET /notes/1
   # GET /notes/1.json
   def show
+    respond_to do |format|
+      format.js {render layout: false}
+      format.html { redirect_to notes_path }
+    end
   end
 
   # GET /notes/new

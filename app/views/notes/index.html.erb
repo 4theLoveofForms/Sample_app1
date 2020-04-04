@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Notes</h1>
+<p>Best note:</p>
+<div id="best_note">
+  <p>You aint seen me...</p>
+</div>
 
 <table>
   <thead>
@@ -14,7 +18,7 @@
     <% @notes.each do |note| %>
       <tr>
         <td><%= note.content %></td>
-        <td><%= link_to 'Show', note %></td>
+        <td><%= link_to 'Select', note, remote: true %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
