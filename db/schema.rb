@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_200003) do
+ActiveRecord::Schema.define(version: 2020_05_08_211501) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "road"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -37,5 +46,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_200003) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "microposts", "users"
 end
