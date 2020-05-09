@@ -2,6 +2,10 @@ class User < ApplicationRecord
   has_many :microposts, dependent: :destroy #I prob want to get rid of this second argument later
   has_one :address
   accepts_nested_attributes_for :address
+  has_many :tasks
+  accepts_nested_attributes_for :tasks,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 
       before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }

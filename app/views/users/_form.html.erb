@@ -20,5 +20,18 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+<h2>Tasks to have a go at:</h2>
+
+        <%= f.fields_for :tasks do |ff| %>
+          <div >
+            <%= ff.label :name %>
+            <%= ff.text_field :name %>
+
+            <% if ff.object.persisted? %>
+              <%= ff.check_box :_destroy %>
+              <%= ff.label :_destroy, "Destroy" %>
+            <% end %>
+          </div>
+        <% end %>
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

@@ -37,7 +37,7 @@ before_action :admin_user,    only: [:destroy]
 #    @user = User.find(params[:id]) # dito
     if @user.update(user_params)
       flash[:sucsess] = "Profile updated"
-      redirect_to @user
+      redirect_to request.referrer
     else
       render 'edit'
     end
@@ -53,7 +53,7 @@ before_action :admin_user,    only: [:destroy]
  private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, address_attributes: [ :id, :city ] )
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, address_attributes: [ :id, :city ], tasks_attributes: [ :id, :name, :_destroy ] )
     end
 
     #before filters
