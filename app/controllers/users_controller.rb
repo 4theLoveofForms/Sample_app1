@@ -33,7 +33,7 @@ before_action :admin_user,    only: [:destroy]
   end
 
   def update
-    # render plain: user_params.inspect
+    # render plain: params.inspect
 #    @user = User.find(params[:id]) # dito
     if @user.update(user_params)
       flash[:sucsess] = "Profile updated"
@@ -53,7 +53,11 @@ before_action :admin_user,    only: [:destroy]
  private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, address_attributes: [ :id, :city ], tasks_attributes: [ :id, :name, :_destroy ] )
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                    address_attributes: [ :id, :city ],
+                    tasks_attributes: [ :id, :name, :_destroy ],
+                    interest_user_joins_attributes: [ interests: [:id, :name] ],
+                    interests_attributes: [ :name ])
     end
 
     #before filters

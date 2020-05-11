@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_110858) do
+ActiveRecord::Schema.define(version: 2020_05_09_114858) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "road"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 2020_05_09_110858) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "interest_user_joins", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "interest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interest_id"], name: "index_interest_user_joins_on_interest_id"
+    t.index ["user_id"], name: "index_interest_user_joins_on_user_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -55,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_110858) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "interest_user_joins", "interests"
+  add_foreign_key "interest_user_joins", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "tasks", "users"
 end
