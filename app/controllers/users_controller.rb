@@ -30,6 +30,7 @@ before_action :admin_user,    only: [:destroy]
 
   def edit
  #   @user = User.find(params[:id]) # current_user means only one user can it be
+    @interests = Interest.all
   end
 
   def update
@@ -56,7 +57,7 @@ before_action :admin_user,    only: [:destroy]
       params.require(:user).permit(:name, :email, :password, :password_confirmation,
                     address_attributes: [ :id, :city ],
                     tasks_attributes: [ :id, :name, :_destroy ],
-                    interest_user_joins_attributes: [ interests: [:id, :name] ],
+                    interest_user_joins_attributes: [ :interest_id, :id, :_destroy ],
                     interests_attributes: [ :name ])
     end
 

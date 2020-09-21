@@ -34,21 +34,21 @@
           </div>
         <% end %>
 <h2> Selectable interests </h2>
-        <%# <%= f.fields_for :interest_user_joins do |ff| %> %>
+        <%= f.fields_for :interest_user_joins do |ff| %>
           <!-- <div class=""> -->
-            <%# <%= ff.check_box :_destroy, { checked: ff.object.persisted? }, '0', '1' %> %>
-            <%# <%= ff.label :_destroy , ff.object.interest.name %> %>
-            <%# <%= ff.hidden_field :interest_id %> %>
+            <%= ff.check_box :_destroy, { checked: ff.object.persisted? }, '0', '1' %>
+            <%= ff.label :_destroy , ff.object.interest.name %>
+            <%= ff.hidden_field :interest_id %>
+            <%= ff.label :interest_id, "id: #{ff.object.interest.id}" %>
           <!-- </div> -->
-        <%# <% end %> %>
+        <% end %>
 
         <%= f.fields_for :interests, @user.interests.build do |ff| %>
-          <%= ff.label :name %>
+          <%= ff.label :name, "Add a new interest" %>
           <%= ff.text_field :name %>
         <% end %>
-        <% @user.interests.each do |interest| %>
-          <%= interest.name %>
-        <% end %>
+
+      
 
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

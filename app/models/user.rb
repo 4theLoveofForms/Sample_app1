@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :interests, through: :interest_user_joins
   accepts_nested_attributes_for :interest_user_joins,
                                 allow_destroy: true
-  accepts_nested_attributes_for :interests
+  accepts_nested_attributes_for :interests,
+                                reject_if: :all_blank
 
       before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
