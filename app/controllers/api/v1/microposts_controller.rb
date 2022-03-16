@@ -6,7 +6,7 @@ module Api
       end
 
       def show
-        @microposts = Micropost.find(params[:id])
+        @micropost = Micropost.find(params[:id])
       end
     end
   end
