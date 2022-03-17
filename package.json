@@ -10,11 +10,11 @@
     "jquery": "3.4.1",
     "turbolinks": "^5.2.0"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.9.0"
-  },
-  "engines": {
-    "node": "10.x"
   }
 }
