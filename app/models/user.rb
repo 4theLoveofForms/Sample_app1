@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   has_many :microposts, dependent: :destroy #I prob want to get rid of this second argument later
       before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
